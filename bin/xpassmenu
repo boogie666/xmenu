@@ -11,5 +11,5 @@ password=$(printf '%s\n' "${password_files[@]}" | xmenu "$@")
 
 [[ -n $password ]] || exit 0;
 
-pass show -c "$password" 2>/dev/null
-
+pass show -c "$password" 2>/dev/null && osascript -e "display notification \"$password has been copied to clipboard\" with title \"xpassmenu\""
+exit 0;
